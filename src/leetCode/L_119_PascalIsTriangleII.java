@@ -6,7 +6,7 @@ public class L_119_PascalIsTriangleII {
 	// the Pascal's triangle.
 	//
 	// Note that the row index starts from 0.
-
+	// 今天头疼更不动
 	public static void main(String[] args) {
 		int rows = 10;
 
