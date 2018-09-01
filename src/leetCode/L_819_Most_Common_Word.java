@@ -1,8 +1,6 @@
 package leetCode;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,14 +17,7 @@ public class L_819_Most_Common_Word {
 		HashMap<String, Integer> map = new HashMap<>();
 		paragraph = paragraph.toLowerCase();
 
-		paragraph = paragraph.replaceAll("\\!", "");
-		paragraph = paragraph.replaceAll("\\?", "");
-		paragraph = paragraph.replaceAll("\\'", "");
-		paragraph = paragraph.replaceAll("\\,", "");
-		paragraph = paragraph.replaceAll("\\;", "");
-		paragraph = paragraph.replaceAll("\\.", "");
-
-		List<String> paragraphList = Arrays.asList(paragraph.split(" "));
+		List<String> paragraphList = Arrays.asList(paragraph.split("[ !?',;.]+"));
 
 		for (String string : paragraphList) {
 			if (map.containsKey(string)) {
@@ -36,16 +27,21 @@ public class L_819_Most_Common_Word {
 			}
 		}
 
+		String result = "";
+		int sentinel = 0;
 		for (int i = 0; i < banned.length; i++) {
 			if (map.containsKey(banned[i])) {
 				map.remove(banned[i]);
 			}
 		}
+		for (Map.Entry<String, Integer> entry : map.entrySet()) {
+			if (entry.getValue() > sentinel) {
+				sentinel = entry.getValue();
+				result = entry.getKey();
+			}
+		}
 
-		List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
-		Collections.sort(list, (o1, o2) -> (o2.getValue() - o1.getValue()));
-
-		return list.get(0).getKey();
+		return result;
 	}
 	// 正则leetcode不让用
 	// public static String mostCommonWord(String paragraph, String[] banned) {
