@@ -17,6 +17,7 @@ public class L_819_Most_Common_Word {
 		HashMap<String, Integer> map = new HashMap<>();
 		paragraph = paragraph.toLowerCase();
 
+		// List<String> paragraphList = Arrays.asList(paragraph.split("\\pP"));
 		List<String> paragraphList = Arrays.asList(paragraph.split("[ !?',;.]+"));
 
 		for (String string : paragraphList) {
