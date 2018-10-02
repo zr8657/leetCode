@@ -5,7 +5,7 @@ public class L_053_Maximum_Subarray {
 	public static void main(String[] args) {
 
 	}
-
+//修改
 	public static int maxSubArray(int[] A) {
 		int n = A.length;
 		int[] dp = new int[n];// dp[i] means the maximum subarray ending with
